@@ -20,3 +20,4 @@ Scenario: The one where user picks different product through search functionalit
 	 			|Laptop|
 	 	Then product should be added in the cart if available 
 	
+	

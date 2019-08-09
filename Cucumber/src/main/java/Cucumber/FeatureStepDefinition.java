@@ -20,9 +20,9 @@ import cucumber.api.java.en.When;
 public class FeatureStepDefinition {
 
 	static WebDriver driver;
-	int productcount=0;
-	
-	@Given("^Navigate to Home Page$")
+	int productcount = 0;
+
+	// @Given("^Navigate to Home Page$")
 	public void navigateToHomePage() throws Throwable {
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Automation\\Cucumber\\Cucumber\\resources\\chromedriver.exe");
@@ -33,7 +33,7 @@ public class FeatureStepDefinition {
 
 	}
 
-	@When("^user enters username and password$")
+	// @When("^user enters username and password$")
 	public void userEntersUsernameAndPassword() throws Throwable {
 
 		PageObjects po = PageFactory.initElements(driver, PageObjects.class);
@@ -44,19 +44,19 @@ public class FeatureStepDefinition {
 		lo.login.click();
 	}
 
-	@Then("^user logged in successfully$")
+	//@Then("^user logged in successfully$")
 	public void userLoggedInSuccessfully() throws Throwable {
-		//Assert.assertEquals(driver.getTitle(), "Admin Home");
+		// Assert.assertEquals(driver.getTitle(), "Admin Home");
 		driver.quit();
 
 	}
 
-	@Given("^Larry has registered in to TestMeApp$")
+	//@Given("^Larry has registered in to TestMeApp$")
 	public void larryHasRegisteredInToTestMeApp() throws Throwable {
 
 	}
 
-	@When("^Larry searches below products in the search box:$")
+	//@When("^Larry searches below products in the search box:$")
 	public void larrySearchesBelowProductsInTheSearchBox(DataTable productsdata) throws Throwable {
 		List<String> productsName = productsdata.asList(String.class);
 		navigateToHomePage();
@@ -68,7 +68,7 @@ public class FeatureStepDefinition {
 			driver.findElement(By.xpath("//input[@value='FIND DETAILS']")).click();
 
 			boolean found = isElementPresent("//a[text()[contains(.,'Add to cart')]]");
-			if(found) {
+			if (found) {
 				productcount++;
 			}
 
@@ -78,14 +78,14 @@ public class FeatureStepDefinition {
 
 	}
 
-	@Then("^product should be added in the cart if available$")
+	//@Then("^product should be added in the cart if available$")
 	public void productShouldBeAddedInTheCartIfAvailable() throws Throwable {
 		WebElement addedProductsInCart = driver.findElement(By.xpath("//div[@class='shop-menu pull-right']/ul/a/b"));
 		int numberOfelements = Integer.parseInt(addedProductsInCart.getText());
 		Assert.assertEquals(productcount, numberOfelements);
 	}
 
-	@When("^user enters \"([^\"]*)\" and \"([^\"]*)\"$")
+	//@When("^user enters \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void userEntersAnd(String arg1, String arg2) throws Throwable {
 		PageObjects po = PageFactory.initElements(driver, PageObjects.class);
 		LoginObject lo = PageFactory.initElements(driver, LoginObject.class);
@@ -100,10 +100,10 @@ public class FeatureStepDefinition {
 		boolean found = false;
 		while (attempts < 2) {
 			try {
-			WebElement element = driver.findElement(By.xpath(locator));
+				WebElement element = driver.findElement(By.xpath(locator));
 				element.click();
 				found = true;
-			break;
+				break;
 			} catch (Exception e) {
 			}
 			attempts++;

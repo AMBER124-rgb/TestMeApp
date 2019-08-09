@@ -4,7 +4,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(features = "resources", glue = "Cucumber", monochrome = true, plugin = { "pretty",
-		"html:cucumber-html-report" }, tags = "@LogIn", dryRun = false)
+		"json:target/cucumber.json" }, tags = {"@Case4"}, dryRun = false)
 
 public class RunnerClass extends AbstractTestNGCucumberTests {
 
